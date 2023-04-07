@@ -1,0 +1,58 @@
+# What is `NPM`?
+	it's software registery for private and public packages; it's also package manager for javascript/node.
+	it has command line tool called npm that is used to access the registry and download packages.
+	
+What is `Parcel/Webpack`? Why do we need it?
+	Parcel is open-source zero configuration build tool and bundler. It bundles various file types including javascript,typescirpt,css,html,images 
+	and much more. It provides local development server, hot reloding, file watching, port-managment, minification, code-cleaning
+	image optimization,consistent hashing, tree-shaking, and much more which prepares web-app both for development and production
+	
+What is `.parcel-cache`
+	this folder stores build files when parcel builds our application so that when parcel rebuilds our application it
+	doesn't has to reparse, analyise and rebuild from scrach. it's used to accelerate build process.
+	
+What is `npx` ?
+	Node Package eXecute/npx a tool used to run javascript packages installed inside node_modules or 
+	it can be used to execute any Package available on the npm registry without even installing it.
+	it comes with npm version 5.2 and higher.
+	
+What is difference between `dependencies` vs `devDependencies`
+	dependencies are packages that our project depends on while devDependencies are packages that are used 
+	for development purpose only. Example, nodemon package is used for hot-reloading
+	
+What is Tree Shaking?
+	it's elimination of dead/unused code. it's loading node modules which are needed and the rest is discarded.
+	it eliminates unused exports. Parcel can do tree shaking for prodcution mode but we have to use
+	es6 module specification(import/export) not common-js spec. If we are using babel/transpiler that converts 
+	es6 to common-js specification, tree shaking won't work
+
+What is Hot Module Replacement?
+	this feature allows modules to be updated at runtime without the need for a full refresh.
+	HMR exchanges, adds, or removes modules while an application is running, without a full reload. Thus,
+	browser is automatically updated when modifications are made to CSS/JS/html in the source code
+	
+What is `.gitignore`? What should we add and not add into it?
+	it contains list of files and folders which are not tracked by git. Thus, when adding and commiting files,
+	git will ignore this files. Auto generated files like build files and node modules should be added here.
+	
+What is the difference between `package.json` and `package-lock.json`
+	package.json holds project meta-data and project dependency. And Package-lock.json files holds
+	locked exact version of dependencies which our project depends on. This is an important file and should be commited
+	to github. When we do npm install, packages are downloaded from package-lock.json file. package-lock.json file is 
+	only modified and updated if we modify package.json file manually.
+	
+Why should I not modify `package-lock.json`?
+	modification of this file will result in having different dependency tree structure compared to other enviroment. Thus
+	our project might result in unexpected result compared to other enviroment. 
+	
+What is `node_modules` ? Is it a good idea to push that on git?
+	it contains all packages our project depends on. No we don't push that to github.
+	
+What is the `dist` folder?
+	it holds build web files. When webpack/parcel/vite builds our project, they output dev/prod build files in dist folder.
+	In production mode, these files are in minified format.
+	
+What is `browserlists`
+	it's package that helps us specify which list-of-browsers are supported in our front-end application.
+	it's specified in package.json file. Browserslist configuration controls the outputted JavaScript so that 
+	the emitted code will be compatible with the browsers specified.
