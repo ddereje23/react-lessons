@@ -1,0 +1,25 @@
+what is react fragment ?
+	it's tag-less container used to group multiple nodes/elements without adding extra element to the DOM.
+	syntax is <React.Fragment></React.Fragment> or <></>; we use the former if we want to add attribute other than key.
+
+what is virtual dom ?
+	it's representation of actual/real dom. It's a DOM in memory, React uses virtual dom to undergo a diff reconcillation.
+	
+what is reconcillation in React ?
+	reconcillation is a diffing algorithm used to decide how component is re-rendered in React. Note, DOM manipulation is
+	expensive and time consuming.
+
+what is React Fiber ?
+	it's a newer reconcillation algorithm engine used by React. It's much faster and smarter than stack reconcillation algorithm
+	which was used before React-16. Stack is synchronous while Fiber is asynchronous which compares current-dom with work-in-progress.
+
+why we need keys in React ?
+	React uses virtual DOM to spot any differences between the DOM trees. If we are rendering same type of mulitple tags(
+	like (muliple div's or h1's), react will need to uniquely identify inorder to know which items have changed, added, or removed 
+	from the virtual dom to avoid re-rendering. Note, if we are rendering mulitple different types of tags, it's not required to use key.
+
+what is props in React ?
+	props is like attributes we pass to react component. It's like function parameter used to make our component dynamic.
+
+what is config driven UI ?
+	it's UI architecture that uses configurarion file/data to display different UI when building the App layout.
