@@ -22,7 +22,7 @@
   list-style-type: none;
   padding: 10px;
 }
-.restarant {
+.restaurant {
   width: 200px;
   border: 1px solid black;
   border-radius: 5px;
@@ -30,11 +30,26 @@
   margin: 10px;
 }
 
-.restarant img {
+.restaurant img {
   width: 100%;
 }
 
 .restaurant-list {
   display: flex;
   flex-wrap: wrap;
+}
+
+.search-container {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
+.search-container input {
+  width: 50%;
+}
+
+.search-container button {
+  padding: 10px;
+  margin-left: 10px;
 }

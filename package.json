@@ -2,7 +2,7 @@
   "name": "react-lessons",
   "version": "1.0.0",
   "description": "",
-  "source": "./lesson-4/index.html",
+  "source": "./lesson-5/index.html",
   "scripts": {
     "dev": "parcel",
     "build": "parcel build"
