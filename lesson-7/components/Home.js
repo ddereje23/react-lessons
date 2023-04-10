@@ -1,11 +1,12 @@
 import Restaurant from "./Restaurant";
 import { useEffect, useState } from "react";
-import ShimmerUI from "./ShimmerUI";
+import Shimmer from "./Shimmer";
 
 const RestaurantList = () => {
   const [searchText, setSearchText] = useState("");
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // api call
@@ -19,6 +20,7 @@ const RestaurantList = () => {
     const json = await res.json();
     const data = json?.data?.cards[2]?.data?.data?.cards;
     console.log(data);
+    setIsLoading(false);
     setAllRestaurants(data);
     setFilteredRestaurants(data);
   };
@@ -38,6 +40,7 @@ const RestaurantList = () => {
           type="text"
           placeholder="Search..."
           value={searchText}
+          disabled={isLoading}
           onChange={(e) => setSearchText(e.target.value)}
           onKeyDown={(e) =>
             e.key === "Enter"
@@ -46,6 +49,7 @@ const RestaurantList = () => {
           }
         />
         <button
+          disabled={isLoading}
           onClick={() =>
             setFilteredRestaurants(handleSearch(searchText, allRestaurants))
           }
@@ -54,7 +58,7 @@ const RestaurantList = () => {
         </button>
       </div>
       {allRestaurants?.length === 0 ? (
-        <ShimmerUI />
+        <Shimmer />
       ) : filteredRestaurants?.length === 0 ? (
         <h1>No Search Result </h1>
       ) : (
@@ -68,12 +72,12 @@ const RestaurantList = () => {
   );
 };
 
-const Body = () => {
+const Home = () => {
   return (
-    <div className="body">
+    <div className="home">
       <RestaurantList />
     </div>
   );
 };
 
-export default Body;
+export default Home;
