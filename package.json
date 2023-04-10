@@ -2,7 +2,7 @@
   "name": "react-lessons",
   "version": "1.0.0",
   "description": "",
-  "source": "./lesson-5/index.html",
+  "source": "./lesson-6/index.html",
   "scripts": {
     "dev": "parcel",
     "build": "parcel build"
@@ -19,7 +19,9 @@
   "homepage": "https://github.com/ddereje23/react-lessons#readme",
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-shimmer": "^3.2.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "parcel": "^2.8.3",
