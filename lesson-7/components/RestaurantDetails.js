@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IMAGE_CDN_URL } from "../constants";
 import Shimmer from "./Shimmer";
+import RouteError from "./RouteError";
 const RestaurantDetails = () => {
   const [restaurantDetail, setRestaurantDetail] = useState(null);
   const { resId } = useParams();
@@ -15,8 +16,7 @@ const RestaurantDetails = () => {
         resId
     );
     const json = await response.json();
-    const data = json?.data?.cards[0]?.card?.card?.info;
-    console.log(data);
+    const data = json?.data?.cards?.[0]?.card?.card?.info;
     setRestaurantDetail(data);
   }
   return !restaurantDetail ? (

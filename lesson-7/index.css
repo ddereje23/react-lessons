@@ -31,8 +31,6 @@
 }
 .restaurant {
   width: 200px;
-  border: 1px solid black;
-  border-radius: 5px;
   padding: 10px;
   margin: 10px;
 }
@@ -50,6 +48,7 @@
   width: 80%;
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
 .search-container input {
@@ -101,4 +100,14 @@
 .restaurant-details > div span {
   margin-left: 20px;
   color: green;
+}
+
+.restaurant-list a:link {
+  text-decoration: none !important;
+}
+
+.restaurant-list a:hover {
+  text-decoration: none !important;
+  border: 1px solid black;
+  border-radius: 5px;
 }
