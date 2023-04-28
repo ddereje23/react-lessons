@@ -1,3 +1,4 @@
+import Parent from "./class-components/Parent";
 const About = () => {
   return (
     <div className="container">
@@ -12,6 +13,7 @@ const About = () => {
         with unparalleled convenience. Convenience is what makes us tick. It's
         what makes us get out of bed and say, "Let's do this."
       </p>
+      <Parent/>
     </div>
   );
 };
