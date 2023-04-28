@@ -5,7 +5,8 @@ export default class Parent extends React.Component {
         super(props)
         this.state = {
             name: 'Parent',
-            count: 0
+            count: 0,
+            count2: 0
         }
         console.log('Parent - constructor')
     }
@@ -17,13 +18,20 @@ export default class Parent extends React.Component {
         },3000)
     }
 
-    componentDidUpdate(){
-        console.log('Parent - componentDidUpdate')
+    componentDidUpdate(prevProps, prevState){
+        // if we have multiple state
+        if (this.state.count !== prevState.count) {
+           console.log('parent - count-1 has changed')
+          }
+        if (this.state.count2 !== prevState.count2) {
+            console.log('parent - count-2 has changed')
+          }
+          console.log('Parent - componentDidUpdate')
     }
 
     componentWillUnmount(){
-        console.log('Parent - componentWillUnmount')
         clearInterval(this.interval);
+        console.log('Parent - componentWillUnmount')
     }
     render(){
         console.log('Parent - render')
