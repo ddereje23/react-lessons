@@ -1,38 +1,13 @@
 import Restaurant from "./Restaurant";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Shimmer from "./Shimmer";
+import useRestaurants from "../hooks/useRestaurants";
+import useRestaurantSearch from "../hooks/useRestaurantSearch";
 
 const RestaurantList = () => {
   const [searchText, setSearchText] = useState("");
-  const [allRestaurants, setAllRestaurants] = useState([]);
-  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // api call
-    fetchRestaurants();
-  }, []);
-
-  const fetchRestaurants = async () => {
-    const res = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5009028&lng=77.2100388&page_type=DESKTOP_WEB_LISTING"
-    );
-    const json = await res.json();
-    const data = json?.data?.cards[2]?.data?.data?.cards;
-    console.log(data);
-    setIsLoading(false);
-    setAllRestaurants(data);
-    setFilteredRestaurants(data);
-  };
-  const handleSearch = (searchText, allRestaurants) => {
-    if (!searchText) {
-      return allRestaurants;
-    }
-    return allRestaurants.filter((restaurant) =>
-      restaurant?.data?.name?.toLowerCase().includes(searchText?.toLowerCase())
-    );
-  };
+  const {allRestaurants, filteredRestaurants, setFilteredRestaurants, isLoading} = useRestaurants();
 
   return (
     <>
@@ -45,14 +20,14 @@ const RestaurantList = () => {
           onChange={(e) => setSearchText(e.target.value)}
           onKeyDown={(e) =>
             e.key === "Enter"
-              ? setFilteredRestaurants(handleSearch(searchText, allRestaurants))
+              ? setFilteredRestaurants(useRestaurantSearch(searchText, allRestaurants))
               : null
           }
         />
         <button
           disabled={isLoading}
           onClick={() =>
-            setFilteredRestaurants(handleSearch(searchText, allRestaurants))
+            setFilteredRestaurants(useRestaurantSearch(searchText, allRestaurants))
           }
         >
           Search

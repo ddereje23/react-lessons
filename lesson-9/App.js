@@ -3,11 +3,15 @@ import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
-import About from "./components/About";
+// import About from "./components/About";
 import Contact from "./components/Contact";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import RouteError from "./components/RouteError";
 import RestaurantDetails from "./components/RestaurantDetails";
+//async loading, ondemand loading, dynamic loading/import, code-spliting, chunking
+import {lazy, Suspense} from 'react';
+
+const About = lazy(() => import("./components/About"))
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -49,7 +53,10 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About />,
+        element: 
+          <Suspense fallback = {<div>Loading ...</div>}>
+            <About />
+          </Suspense>,
       },
       {
         path: "/contact",
