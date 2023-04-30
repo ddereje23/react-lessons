@@ -1,0 +1,18 @@
+when and why do we need lazy() in react ?
+	lazy loading is code splitting/chunking/dynamic loading/dynmaic import method used to reduce intial load
+	time. It conserves bandwidth by delivering content to users only on demand/request. Thus, reducing intial
+	bundle size will enhance performace of the app because it speeds up the execution time the JavaScript.
+	React.lazy() is a function that is called with a call-back function we want to load asynchronously. This
+	callback function must load a component using dynamic imports. React will create a separate file for it, 
+	and it will be loaded independently.
+	It's used in a React app is composed of many components. Forexample: a Modal that is used to display modals 
+	should not be loaded until the user clicks a button. Thus lazy() loading is used when we want to load a
+	component asynchronously and the component is not readily needed in the initial render of the app. 
+
+what is suspense ?
+	suspense wraps lazy-loaded component and has fallback props. The The fallback prop is a component 
+	that will be rendered while the component is loading.
+
+what is the advanatges and disadvantages of using code-splitting pattern ?
+	advanatge: saves bandwidth, enhances app performace by speeding up the execution time of JavaScript.
+	disadvantage: generate a lot of files which will cause multiple network requests.
